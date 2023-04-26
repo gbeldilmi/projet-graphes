@@ -34,6 +34,15 @@ bool convient(int x, int c) // teste si la couleur c peut être donnee au sommet
   return true;
 }
 
+bool convientDSAT(int x, int c, int k) // teste si la couleur c peut �tre donnee au sommet x - version pour DSATUR
+{
+  int nb = 0;
+  for (int i = 0; i < n; i++)
+    if (adj[x][i] && (couleur2[i] == c))
+      nb++;
+  return (nb <= k);
+}
+
 bool convientDSAT2(int x, int c, int k) // teste si la couleur c peut �tre donnee au sommet x - version pour DSATUR2
 {
   int nb = 0;
@@ -116,7 +125,7 @@ int DSATUR2(int k)
   {
     c = 1;
     x = dsatMax(); // on choisit le sommet de DSAT max non encore colorié
-    while (!convientDSAT2(x, c, k))
+    while (!convientDSAT(x, c, k))
       c++;                      // on cherche la plus petite couleur disponible pour ce sommet
     for (int j = 0; j < n; j++) // mise à jour des DSAT
     {
