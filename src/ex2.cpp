@@ -152,8 +152,8 @@ float degmoy()
 
 int main()
 {
-  int p, k, nbc, imp;
-  cout << "nombre de sommets:" << endl;
+  int p, k, nbc, imp = 0;
+  cout << "nombre de sommets" << endl;
   cin >> n;
   cout << "proba d'arête: " << endl;
   cin >> p;
@@ -175,19 +175,25 @@ int main()
         cout << j << " ";
     cout << endl;
   }
+  float dm = degmoy();
+  cout << "degre moyen: " << dm << endl;
+  while (imp < dm + 1) {
+    cout << "-----------------------------------------" << endl;
+    cout << "degre d'improprete: " << imp << endl;
+    // cin >> imp;
 
-  cout << "degre moyen: " << degmoy() << endl;
-  cout << "degre d'improprete: " << endl;
-  cin >> imp;
-
-  k = DSATUR2(imp);
-  cout << "DSAT: coloration en " << k << " couleurs : " << endl;
-  for (int i = 0; i < n; i++)
-    cout << "couleur de " << i << " : " << couleur2[i] << endl;
-
+    k = DSATUR2(imp);
+    cout << "DSAT: coloration en " << k << " couleurs : " << endl;
+    /*for (int i = 0; i < n; i++)
+      cout << "couleur de " << i << " : " << couleur2[i] << endl;
+    */
+    imp++;
+  }
+/*
   cout << "ColorExact :" << endl;
-  nbc = nbChromatique(k);
+  nbc = nbChromatique(dm);
   cout << "Nombre chromatique : " << nbc << endl;
-
+//*/
   return 0;
 }
+
