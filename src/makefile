@@ -1,6 +1,6 @@
-CXX_FLAGS := -v -Wall -Werror -Wextra -O3
+CXX_FLAGS := 
 
-.PHONY : all, ex1, ex2
-all : ex1 ex2
-% : %.cpp
+.PHONY : all
+all : ex1 ex2 ex4 ex5
+ex% : ex%.cpp
 	g++ $(CXX_FLAGS) $< -o $@  && ./$@
